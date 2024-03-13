@@ -39,17 +39,9 @@ buttons.forEach(button => {
             if (expectedOrder.length === 0) {
                 console.log("ゲームクリア！");
                 StopTime();
-                
-                
-                // ゲームをリセットするか、適切な処理を行う
             }
-            
-            button.value = "";
+            button.value = "🔴";
         } else {
-            // 間違った順番でクリックされた場合
-            console.log("間違った順番です");
-            // ゲームをリセットするか、適切な処理を行う
-
         }
     });
 });
