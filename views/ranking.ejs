@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランキング一覧</title>
+    
+    <link rel="stylesheet" href="ranking.css">
+</head>
+<body>
+    <div class="header"><a href="/">戻る</a></div>
+
+
+    <div class="ranking">
+        <h1 class="itiran">ランキング一覧</h1>
+        <h6> TOP10位まで表示されていましたが上限解放しました。</h6>
+    <% for (let i = 0; i < Math.min(touch.length, 10000000); i++) { %>
+        <% const rank = ranking[i]; %>
+        <div class="ranking">
+            <span class="border"><%= i + 1 %>位:</span>
+            <span class="name"><%= rank.name %></span>
+            <span class="time"><%= rank.time %></span>
+        </div>
+            <% } %>
+
+</body>
+</html>
