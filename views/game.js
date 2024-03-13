@@ -43,8 +43,8 @@ buttons.forEach(button => {
                 
                 // ゲームをリセットするか、適切な処理を行う
             }
-            // 正解の場合、ボタンのテキストを⭕️に変更する
-            button.value = "⭕️";
+            
+            button.value = "";
         } else {
             // 間違った順番でクリックされた場合
             console.log("間違った順番です");
