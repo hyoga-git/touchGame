@@ -40,14 +40,14 @@ buttons.forEach(button => {
                 console.log("ゲームクリア！");
                 StopTime();
             }
-            button.value = "🔴";
+            button.value = "";
         } else {
         }
     });
 });
 
 let elapsed = 0;
-let prev = new Date();
+
 
 function timeInput(){
     const ms = elapsed % 1000; 
@@ -72,6 +72,7 @@ function timeSet(){
     if (interval !== null) {
         return;
     }
+    let prev = new Date();
     interval = setInterval(function() {
         let now = new Date();
         elapsed += now - prev;
