@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const pool=require("./db");
+const pool = require("./db");
 const axios=require("axios");
 app.use(express.static("views"));
 const bodyParser = require("body-parser");
@@ -29,7 +29,19 @@ app.get("/touch",(req,res)=>{
 app.get("/ranking",(req,res)=>{
     res.render("ranking.ejs")
     console.log("ランキング表示")
-})
+
+    pool.query(
+        "SELECT * FROM ranking ORDER BY time ASC",
+        (error, results) => {
+            if (error) {
+                console.log("データベース内を表示できませんでした。", error);
+                return res.status(500).send("Internal Server Error");
+            }
+            res.render("ranking.ejs", { touch: results.rows });
+        }
+    );
+});
+
 
 
 app.post("/submit-result",(req,res)=>{

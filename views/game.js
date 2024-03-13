@@ -96,7 +96,7 @@ function StopTime(){
     let  record = latestTime.innerText;
     const playerName = prompt("あなたの名前を入力してください："); 
     console.log(`名前: ${playerName} レコード: ${record}`);
-    axios.post("/submit-result", { playerName, record })
+    axios.post("submit-result", { playerName, record })
     .then(response => {
         console.log(response.data);
     })
