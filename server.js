@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
+const pool=require("./db");
 const axios=require("axios");
 app.use(express.static("views"));
 const bodyParser = require("body-parser");
