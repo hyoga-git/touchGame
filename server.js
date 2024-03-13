@@ -56,7 +56,6 @@ app.post("/submit-result",(req,res)=>{
 
 })
 
-
-app.listen(PORT,()=>{
-    console.log("サーバーを起動しました")
+app.listen(process.env.PORT || PORT, () => {
+    console.log("サーバー起動");
 });
