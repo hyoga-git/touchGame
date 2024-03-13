@@ -24,7 +24,7 @@ app.get("/ranking",(req,res)=>{
     console.log("ランキング表示")
 
     pool.query(
-        "SELECT * FROM ranking ORDER BY time ASC",
+        "SELECT * FROM touch ORDER BY time ASC",
         (error, results) => {
             if (error) {
                 console.log("データベース内を表示できませんでした。", error);
