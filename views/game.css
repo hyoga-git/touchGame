@@ -1,12 +1,34 @@
-body{
+#time{
+    font-size:30px;
     text-align: center;
+    margin:20px;
 }
 
-input {
-    width:100px;
-    text-align:center;
-    font-size:50px;
-    margin-top: 80px;;
-    border-radius: 20px;
+
+table {
+    margin-top:60px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+input{
+    font-size:10px;
+    width: 100px;    
+    height: 20px;  
+    margin-left: 150px;
+    background-color: black;
+    color:white;
+}
+
+button{
+font-size:20px;
+background-color:black;
+color:white;
+margin:auto;
+width: 70px;    
+height: 30px;
+border-radius: 20%;
+}
+
+
 

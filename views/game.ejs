@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>タッチゲーム</title>
-    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-       
-    <div class="header"><a href="/">戻る</a></div>
-        <table id="touch">
+    
+    <table id="table">
+    
     <tr>
-        <td><input type="button" value="" id="1" ></td>
-        <td><input type="button" value="" id="2"></td>
-        <td><input type="button" value="" id="3"></td>
+    <td><button id="1" ></button></td>
+    <td><button id="2" ></button></td>
+    <td><button id="3" ></button></td>
     </tr>
+
     <tr>
-        <td><input type="button" value="" id="4"></td>
-        <td><input type="button" value="" id="5"></td>
-        <td><input type="button" value="" id="6"></td>
+        <td><button id="4" ></button></td>
+        <td><button id="5" ></button></td>
+        <td><button id="6" ></button></td>
     </tr>
+
     <tr>
-        <td><input type="button" value="" id="7"></td>
-        <td><input type="button" value="" id="8"></td>
-        <td><input type="button" value="" id="9"></td>
+        <td><button id="7" ></button></td>
+        <td><button id="8" ></button></td>
+        <td><button id="9" ></button></td>
     </tr>
-</table>
+
+    </table>
 
 <div id="time">00:00:00.000</div>
-<button id="startGame"type="button" onclick="gameStart()">ゲームを開始する</button>
+<input type="button" id="startGame"value="ゲームを開始する" onClick="gameStart()">
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="game.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
