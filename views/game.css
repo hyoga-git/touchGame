@@ -1,3 +1,7 @@
+body{
+    text-align: center;
+    font-size:40px;
+}
 #time{
     font-size:30px;
     text-align: center;
@@ -21,14 +25,15 @@ input{
 }
 
 button{
-font-size:20px;
-background-color:black;
-color:white;
-margin:auto;
-width: 70px;    
-height: 30px;
-border-radius: 20%;
-}
+    font-size:20px;
+    background-color:black;
+    color:white;
+    margin:auto;
+    width:90px;    
+    height:60px;
+    border-radius: 20%;
+    margin:10px
+    }
 
 
 
