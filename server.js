@@ -18,7 +18,7 @@ app.get("/",(req,res)=>{
 
 app.get("/touch",(req,res)=>{
     console.log("反射神経のゲーム起動中")
-    res.render("game.ejs", { touch:results.rows });
+    res.render("game.ejs")
 })
     
 
