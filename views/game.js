@@ -99,15 +99,12 @@ function StopTime() {
     const end=document.getElementById('end');
     const score=document.getElementById('score');
     const ranking=document.getElementById('ranking');
+    const once=document.getElementById('once');
     table.remove()
     end.innerHTML = '<a href="/">終了</a>';
-    
     score.innerHTML=`${playerName}さんは$位です`
     ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
-
-    
-
-
+    once.innerHTML='<a href="/touch">もう一度行う</a>'
 }
 
 function gameStart() {
