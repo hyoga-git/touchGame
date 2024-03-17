@@ -81,43 +81,51 @@ function timeSet() {
     }, 10); // 100ミリ秒ごとにログを出力
 }
 
-function StopTime() {
+
+    function StopTime() {
+        clearInterval(interval);
+        let latestTime = time;
+        let record = latestTime.innerText;
+        const playerName = prompt("あなたの名前を入力してください：");
+        console.log(`名前: ${playerName} レコード: ${record}`);
+        axios.post("submit-result", { playerName, record })
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
     
-    clearInterval(interval);
-    let latestTime = time;
-    let record = latestTime.innerText;
-    const playerName = prompt("あなたの名前を入力してください：");
-    console.log(`名前: ${playerName} レコード: ${record}`);
-    axios.post("submit-result", { playerName, record })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-    const table=document.getElementById('table');
-    const end=document.getElementById('end');
-    const score=document.getElementById('score');
-    const ranking=document.getElementById('ranking');
-    const once=document.getElementById('once');
-    table.remove()
-
-    end.innerHTML = '<a href="/">終了</a>';
-
-
-
-    score.innerHTML=`${playerName}さんは$位です!!`
-    ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
-    once.innerHTML='<a href="/touch">もう一度行う</a>'
-//DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
-//なのでforEachで回すだけでおｋ
-console.log(touchData)
-
-
-
-
-}
-
+        // データベースから取得したデータ
+        const allTimes = results.rows.map(row => parseInt(row.time)); // データベースから取得したタイムを数値に変換
+    
+        // プレイヤーのタイム
+        const playerTime = parseInt(record);
+    
+        // データベースから取得したタイムとプレイヤーのタイムを比較して、プレイヤーの順位を特定する
+        let playerRank = 1;
+        for (let i = 0; i < allTimes.length; i++) {
+            if (playerTime > allTimes[i]) {
+                playerRank++;
+            }
+        }
+    
+        // 順位を表示する
+        console.log(`${playerName}さんの順位は${playerRank}位です`);
+    
+        const table = document.getElementById('table');
+        const end = document.getElementById('end');
+        const score = document.getElementById('score');
+        const ranking = document.getElementById('ranking');
+        const once = document.getElementById('once');
+        table.remove();
+    
+        end.innerHTML = '<a href="/">終了</a>';
+        score.innerHTML = `${playerName}さんは${playerRank}位です!!`;
+        ranking.innerHTML = '<a href="/ranking">ランキングへ移動</a>';
+        once.innerHTML = '<a href="/touch">もう一度行う</a>';
+    
+    }
 function gameStart() {
     one.innerHTML = number();
     two.innerHTML = number();

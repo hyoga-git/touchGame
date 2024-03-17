@@ -13,13 +13,23 @@ app.set('view engine', 'ejs');
 app.get("/",(req,res)=>{
     res.render("home.ejs")
     console.log("ルートディレクトリーに入っています")
+    
 })
 
 app.get("/touch",(req,res)=>{
     console.log("反射神経のゲーム起動中")
-    res.render("game.ejs")
+    
+    pool.query(
+        "SELECT * FROM touch ORDER BY time ASC",
+        (error, results) => {
+            if (error) {
+                console.log("データベース内を表示できませんでした。", error);
+                return res.status(500).send("Internal Server Error");
+            }
+            res.render("game.ejs", { touch:results.rows });
         }
     );
+});
 
 
 
