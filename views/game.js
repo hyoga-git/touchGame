@@ -81,21 +81,42 @@ function timeSet() {
     }, 10); // 100ミリ秒ごとにログを出力
 }
 
+
 function StopTime() {
-    
     clearInterval(interval);
-    let latestTime = time;
-    let record = latestTime.innerText;
+    let latestTimeElement = document.getElementById('time'); // タイム表示の要素を取得
+    let record = latestTimeElement.innerText; // 最新のタイムを取得
     const playerName = prompt("あなたの名前を入力してください：");
-    console.log(`名前: ${playerName} レコード: ${record}`);
-    axios.post("submit-result", { playerName, record })
+
+    // データベースからランキングデータを取得して、プレイヤーの順位を計算
+    axios.get("/getRanking")
     .then(response => {
-        console.log(response.data);
+        let rankingData = response.data;
+        let playerRank = 1;
+        for (let i = 0; i < rankingData.length; i++) {
+            if (record < rankingData[i].record) {
+                playerRank++;
+            }
+        }
+
+        // プレイヤーの順位をHTMLに表示
+        const score = document.getElementById('score');
+        score.innerHTML = `${playerName}さんは${playerRank}位です`;
+
+        // その他の処理
+        const table = document.getElementById('table');
+        const end = document.getElementById('end');
+        const ranking = document.getElementById('ranking');
+        table.remove();
+        end.innerHTML = '<a href="/">終了</a>';
+        ranking.innerHTML = '<a href="/ranking">ランキングへ移動</a>';
     })
     .catch(error => {
         console.error(error);
     });
 }
+
+
 
 function gameStart() {
     one.innerHTML = number();
