@@ -53,7 +53,6 @@ app.post("/submit-result",(req,res)=>{
             }
             console.log(`名前:${playerName} レコード: ${times}`);
             res.status(200).send("OK");
-            res.send(results.rows);
         }
     );
 });
