@@ -1,15 +1,14 @@
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let expectedOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-axios.post("/touch")
-.then(response => {
-const touchData = response.data; // レスポンスからデータを取得
-console.log(touchData); // データをログに出力して確認
-// データを活用する他の処理をここに記述
-})
-.catch(error => {
-console.error("データの取得中にエラーが発生しました。", error);
-});
+axios.get("/touch")
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 
 const one=document.getElementById('1');
 const two=document.getElementById('2');
