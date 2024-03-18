@@ -103,7 +103,16 @@ function StopTime() {
     table.remove()
 
     end.innerHTML = '<a href="/">終了</a>';
-
+    
+    axios.get("/touch")
+    .then(response => {
+    const touchData = response.data; // レスポンスからデータを取得
+    console.log(touchData); // データをログに出力して確認
+    // データを活用する他の処理をここに記述
+  })
+  .catch(error => {
+    console.error("データの取得中にエラーが発生しました。", error);
+  });
 
 
     score.innerHTML=`${playerName}さんは$位です!!`
