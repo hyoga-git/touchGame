@@ -19,6 +19,7 @@ app.get("/",(req,res)=>{
 app.get("/touch",(req,res)=>{
     
     console.log("反射神経のゲーム起動中")
+    
     pool.query(
 
         "SELECT * FROM touch ORDER BY time ASC",
@@ -28,6 +29,7 @@ app.get("/touch",(req,res)=>{
                 return res.status(500).send("Internal Server Error");
             }
             res.render("game.ejs", { touch:results.rows });
+            console.log("データを送信できました")
         }
     );
 })
@@ -42,7 +44,7 @@ app.get("/ranking",(req,res)=>{
                 console.log("データベース内を表示できませんでした。", error);
                 return res.status(500).send("Internal Server Error");
             }
-            res.render("ranking.ejs", { touch:results.rows });
+            res.render("ranking.ejs", {touch:results.rows});
         }
     );
 });
