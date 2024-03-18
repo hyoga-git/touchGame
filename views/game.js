@@ -1,13 +1,7 @@
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let expectedOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-axios.get("/touch")
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+
 
 
 const one=document.getElementById('1');
@@ -98,7 +92,7 @@ function StopTime() {
     const playerName = prompt("あなたの名前を入力してください：");
     console.log(`名前: ${playerName} レコード: ${record}`);
 
-    axios.post("submit-result", { playerName, record })
+    axios.post("submit-result",{ playerName, record })
     .then(response => {
         console.log(response.data);
     })
@@ -114,6 +108,27 @@ function StopTime() {
 
     end.innerHTML = '<a href="/">終了</a>';
     
+    function fetchDataFromServer() {
+        fetch('/touch')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // JSONデータを取得する場合
+        })
+        .then(data => {
+            console.log(data); // データをログに出力して確認
+            // データを活用する他の処理をここに記述
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
+    
+    // データを取得する関数を呼び出す
+    fetchDataFromServer();
+    
+   
   
 
     score.innerHTML=`${playerName}さんは$位です!!`
