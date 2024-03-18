@@ -1,7 +1,7 @@
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let expectedOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-axios.get("/touch")
+axios.post("/touch")
 .then(response => {
 const touchData = response.data; // レスポンスからデータを取得
 console.log(touchData); // データをログに出力して確認
@@ -98,6 +98,7 @@ function StopTime() {
     let record = latestTime.innerText;
     const playerName = prompt("あなたの名前を入力してください：");
     console.log(`名前: ${playerName} レコード: ${record}`);
+
     axios.post("submit-result", { playerName, record })
     .then(response => {
         console.log(response.data);
