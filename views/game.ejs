@@ -38,7 +38,15 @@
     </tr>
 
     </table>
-
+    <h6> TOP10位まで表示されていましたが上限解放しました。</h6>
+    <% for (let i = 0; i < Math.min(touch.length,10000000); i++) { %>
+        <% const rank = touch[i]; %>
+        <div class="ranking">
+            <span class="border"><%= i + 1 %>位:</span>
+            <span class="name"><%= rank.name %></span>
+            <span class="time"><%= rank.time %></span>
+        </div>
+            <% } %>
 <div id="time">00:00:00.000</div>
 <input type="button" id="startGame"value="ゲームを開始する" onClick="gameStart()">
 <div id="end"></div>
