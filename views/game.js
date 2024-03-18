@@ -107,7 +107,7 @@ function StopTime() {
     table.remove()
 
     end.innerHTML = '<a href="/">終了</a>';
-    score.innerHTML=`${playerName}さんは$位です!!`
+    score.innerHTML=`${playerName}さんは${record}　で$位です!!`
     ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
     once.innerHTML='<a href="/touch">もう一度行う</a>'
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
