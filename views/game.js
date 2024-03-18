@@ -82,12 +82,13 @@ function timeSet() {
 }
 
 function StopTime() {
-    
-    clearInterval(interval);
-    let latestTime = time;
-    let record = latestTime.innerText;
-    const playerName = prompt("あなたの名前を入力してください：");
-    console.log(`名前: ${playerName} レコード: ${record}`);
+    clearInterval(interval); // タイマーを停止
+    let latestTime = time; // タイム表示エリアの要素を取得
+    let record = latestTime.innerText; // タイムを取得
+    const playerName = prompt("あなたの名前を入力してください："); // プレイヤーの名前を入力
+    console.log(`名前: ${playerName} レコード: ${record}`); // コンソールに名前とレコードを出力
+
+    // サーバーにプレイヤーの名前とレコードを送信
     axios.post("submit-result", { playerName, record })
     .then(response => {
         console.log(response.data);
@@ -95,38 +96,43 @@ function StopTime() {
     .catch(error => {
         console.error(error);
     });
-    const table=document.getElementById('table');
-    const end=document.getElementById('end');
-    const score=document.getElementById('score');
-    const ranking=document.getElementById('ranking');
-    const once=document.getElementById('once');
-    table.remove()
 
-    end.innerHTML = '<a href="/">終了</a>';
-    
+    const table = document.getElementById('table'); // テーブル要素を取得
+    const end = document.getElementById('end'); // 終了エリア要素を取得
+    const score = document.getElementById('score'); // スコア表示エリア要素を取得
+    const ranking = document.getElementById('ranking'); // ランキングへ移動エリア要素を取得
+    const once = document.getElementById('once'); // もう一度行うエリア要素を取得
+    table.remove(); // テーブルを削除
+
+    end.innerHTML = '<a href="/">終了</a>'; // 終了エリアにリンクを表示
+
+    // ランキングデータを取得してプレイヤーの順位を表示
     axios.get("/touch")
     .then(response => {
-    const touchData = response.data; // レスポンスからデータを取得
-    console.log(touchData); // データをログに出力して確認
-    // データを活用する他の処理をここに記述
-  })
-  .catch(error => {
-    console.error("データの取得中にエラーが発生しました。", error);
-  });
+        const touchData = response.data; // レスポンスからデータを取得
+        console.log(touchData); // データをログに出力して確認
 
+        // プレイヤーの順位を取得
+        const playerData = touchData.find(data => data.name === playerName);
+        if (playerData) {
+            const playerRank = touchData.indexOf(playerData) + 1; // 配列インデックスから順位を計算
+            score.innerHTML = `${playerName}さんは${playerRank}位です！`; // スコア表示エリアに順位を表示
+        } else {
+            score.innerHTML = `${playerName}さんの記録はランキング外です。`; // スコア表示エリアにランキング外を表示
+        }
 
-    score.innerHTML=`${playerName}さんは$位です!!`
-    ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
-    once.innerHTML='<a href="/touch">もう一度行う</a>'
-    //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
-    //なのでforEachで回すだけでおｋ
-    
+        ranking.innerHTML = '<a href="/ranking">ランキングへ移動</a>'; // ランキングへ移動エリアにリンクを表示
+        once.innerHTML = '<a href="/touch">もう一度行う</a>'; // もう一度行うエリアにリンクを表示
 
+        // 他の処理をここに記述
+    })
+    .catch(error => {
+        console.error("データの取得中にエラーが発生しました。", error); // エラーメッセージをコンソールに出力
+    });
 
-
-
-
+    // 他の処理をここに記述
 }
+
 
 function gameStart() {
     one.innerHTML = number();
