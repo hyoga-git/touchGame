@@ -20,14 +20,14 @@ app.get("/touch",(req,res)=>{
     
     console.log("反射神経のゲーム起動中")
     pool.query(
-        
+
         "SELECT * FROM touch ORDER BY time ASC",
         (error, results) => {
             if (error) {
                 console.log("データベース内を表示できませんでした。", error);
                 return res.status(500).send("Internal Server Error");
             }
-            res.render("gane.ejs", { touch:results.rows });
+            res.render("game.ejs", { touch:results.rows });
         }
     );
 })
