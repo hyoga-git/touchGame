@@ -107,30 +107,8 @@ function StopTime() {
     table.remove()
 
     end.innerHTML = '<a href="/">終了</a>';
-    
-    function fetchDataFromServer() {
-        fetch('/touch')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json(); // JSONデータを取得する場合
-        })
-        .then(data => {
-            console.log(data); // データをログに出力して確認
-            // データを活用する他の処理をここに記述
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
-    }
-    
-    // データを取得する関数を呼び出す
-    fetchDataFromServer();
-    
    
-  
-
+    // データを取得する関数を呼び出す
     score.innerHTML=`${playerName}さんは$位です!!`
     ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
     once.innerHTML='<a href="/touch">もう一度行う</a>'
