@@ -1,6 +1,16 @@
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 let expectedOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+axios.get("/touch")
+.then(response => {
+const touchData = response.data; // レスポンスからデータを取得
+console.log(touchData); // データをログに出力して確認
+// データを活用する他の処理をここに記述
+})
+.catch(error => {
+console.error("データの取得中にエラーが発生しました。", error);
+});
+
 const one=document.getElementById('1');
 const two=document.getElementById('2');
 const three=document.getElementById('3'); 
@@ -104,16 +114,7 @@ function StopTime() {
 
     end.innerHTML = '<a href="/">終了</a>';
     
-    axios.get("/touch")
-    .then(response => {
-    const touchData = response.data; // レスポンスからデータを取得
-    console.log(touchData); // データをログに出力して確認
-    // データを活用する他の処理をここに記述
-    })
-    .catch(error => {
-    console.error("データの取得中にエラーが発生しました。", error);
-    });
-
+  
 
     score.innerHTML=`${playerName}さんは$位です!!`
     ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
