@@ -85,39 +85,47 @@ function timeSet() {
 }
 
 function StopTime() {
-    
     clearInterval(interval);
     let latestTime = time;
     let record = latestTime.innerText;
     const playerName = prompt("あなたの名前を入力してください：");
     console.log(`名前: ${playerName} レコード: ${record}`);
 
-    axios.post("submit-result",{ playerName, record })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-    const table=document.getElementById('table');
-    const end=document.getElementById('end');
-    const score=document.getElementById('score');
-    const ranking=document.getElementById('ranking');
-    const once=document.getElementById('once');
-    table.remove()
+    axios.post("submit-result", { playerName, record })
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    
+    const table = document.getElementById('table');
+    const end = document.getElementById('end');
+    const score = document.getElementById('score');
+    const ranking = document.getElementById('ranking');
+    const once = document.getElementById('once');
+    table.remove();
 
     end.innerHTML = '<a href="/">終了</a>';
-    score.innerHTML=`${playerName}さんは<br>${record}で$位です!!`
-    ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
-    once.innerHTML='<a href="/touch">もう一度行う</a>'
-    //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
-    //なのでforEachで回すだけでおｋ
-    const touchDataElement = document.getElementById('touchData');
-    console.log(touchData)
-    
-    
 
+    ranking.innerHTML = '<a href="/ranking">ランキングへ移動</a>';
+    once.innerHTML = '<a href="/touch">もう一度行う</a>';
+
+    // タッチデータを取得してタイムを比較し、順位を求める
+    const touchDataElement = document.getElementById('touchData');
+    const touchDataString = touchDataElement.getAttribute('data-touch');
+    const touchData = JSON.parse(touchDataString);
+
+    let playerRank = 1;
+    touchData.forEach(player => {
+        if (player.time < record) {
+            playerRank++;
+        }
+    });
+
+    score.innerHTML = `${playerName}さんは<br>${record}で${playerRank}位です!!`;
 }
+
 
 function gameStart() {
     one.innerHTML = number();
