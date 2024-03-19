@@ -115,6 +115,7 @@ function StopTime() {
     const touchDataElement = document.getElementById('touchData');
     console.log(touchData)
     
+    
 
 }
 
