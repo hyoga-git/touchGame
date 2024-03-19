@@ -113,18 +113,9 @@ function StopTime() {
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
     
-    const touchData = JSON.parse(document.getElementById('touchData').dataset.touch);
+  const touchData = JSON.parse(document.getElementById('touchData').dataset.touch);
     console.log(touchData);
-    let playerRank = 1;
-    const playerTime = record; // プレイヤーのクリアタイムを取得（ここでは record としていますが適切な値に置き換えてください）
-
-    touchData.forEach(player => {
-        if (player.time < playerTime) { // プレイヤーのクリアタイムと比較
-            playerRank++;
-        } else {
-            score.innerHTML = `${player.name}さんは<br>${record}で${playerRank}位です!!`;
-        }
-    });
+    
 
 
 }
