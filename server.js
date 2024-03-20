@@ -65,7 +65,34 @@ app.post("/submit-result",(req,res)=>{
             console.log(`名前:${playerName} レコード: ${times}`);
             res.status(200).send("OK");
         }
-    );
+     );
+     if (times !== null) {
+        pool.query(
+            'SELECT time FROM touch ORDER BY time ASC',
+            (error, results) => {
+                if (error) {
+                    console.log("データベース内を表示できませんでした。", error);
+                    return res.status(500).send("Internal Server Error");
+                }
+    
+                // データベースから取得したクリア時間の配列
+                const dbTimes = results.rows.map(row => row.time);
+    
+                // プレイヤーのクリア時間とデータベース内の時間を比較
+                const isInDatabase = dbTimes.includes(times);
+    
+                if (isInDatabase) {
+                    console.log("プレイヤーのクリア時間がデータベースに存在します");
+                    // データベースにプレイヤーのクリア時間が存在する場合の処理をここに記述します
+                } else {
+                    console.log("プレイヤーのクリア時間がデータベースに存在しません");
+                    // データベースにプレイヤーのクリア時間が存在しない場合の処理をここに記述します
+                }
+            }
+        );
+    }
+    
+    
 });
 
 app.listen(process.env.PORT || PORT, () => {
