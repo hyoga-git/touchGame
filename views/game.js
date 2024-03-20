@@ -114,6 +114,8 @@ function StopTime() {
     //なのでforEachで回すだけでおｋ
     const touchData=document.getElementsById("touchData")
     console.log(touchData);
+
+    
     score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
 
 
