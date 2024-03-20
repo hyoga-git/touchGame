@@ -113,10 +113,22 @@ function StopTime() {
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
     
-    const touchData= document.getElementById('touchData');
-    console.log(touchData);
+   // HTTPリクエストを送信してデータを取得
+fetch('/touch')
+.then(response => response.json())
+.then(data => {
+  // データを取得した後の処理
+  console.log(data); // サーバーから取得したデータをコンソールに出力
+  const timesArray = data.map(entry => entry.time); // 時間のみを抽出
+  console.log(timesArray); // 時間のみの配列をコンソールに出力
+  // ここに取得したデータを処理するコードを追加
+})
+.catch(error => {
+  console.error('データを取得できませんでした:', error);
+});
+
     
-    score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
+ score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
 
 
 }
