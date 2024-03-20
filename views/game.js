@@ -112,11 +112,8 @@ function StopTime() {
     once.innerHTML='<a href="/touch">もう一度行う</a>'
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
-    const touchData=document.getElementsByid(`touchData`)
+    const touchData=document.getElementsById("touchData")
     console.log(touchData);
-
-
-
     score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
 
 
