@@ -112,23 +112,12 @@ function StopTime() {
     once.innerHTML='<a href="/touch">もう一度行う</a>'
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
-// JavaScript
-// HTMLから要素を取得
-const touchDataElement = document.getElementById('touchData');
-
-// data-touch属性の値を取得
-let touchDataJSON = touchDataElement.getAttribute('data-touch');
-
-// HTMLタグを取り除く
-touchDataJSON = touchDataJSON.replace(/<[^>]*>?/gm, '');
-
-// JSON文字列をJavaScriptオブジェクトにパース
-const touchData = JSON.parse(touchDataJSON);
-
-// データを表示
+    const touchData=document.getElementsByid(`touchData`)
     console.log(touchData);
 
- score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
+
+
+    score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
 
 
 }
