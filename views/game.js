@@ -113,7 +113,7 @@ function StopTime() {
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
 
-    const touchData=document.getElementById("touchData")
+
     console.log(touchData)
 
 
