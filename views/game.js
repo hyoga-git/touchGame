@@ -108,12 +108,12 @@ function StopTime() {
 
     end.innerHTML = '<a href="/">終了</a>';
     
-    ranking.innerHTML='<a href="/ranking">ランキングへ移動</a>'
     once.innerHTML='<a href="/touch">もう一度行う</a>'
-    //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
-    //なのでforEachで回すだけでおｋ
+    
 
-    score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;
+    score.innerHTML = `${playerName}さんは<br>${record}です!`
+    ranking.innerHTML='<a href="/ranking">順位を確認する</a>'
+
 
 
 }
