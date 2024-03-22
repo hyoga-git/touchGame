@@ -48,20 +48,7 @@
 <br>
 <div id="once"></div>
 <br>
-
-<script>
-  // game.ejs内でデータを取得し、game.jsに渡す
-  const touchData = <%= JSON.stringify(touch) %>
-  console.log(touchData); // 確認のためコンソールに出力
-
-  // game.jsを読み込んで、データを渡す
-  const script = document.createElement('script');
-  script.src = '/views//game.js'; // game.jsのパスを指定
-  script.setAttribute('data-touch', JSON.stringify(touchData)); // データを属性としてセット
-  document.body.appendChild(script);
-</script>
-
-
+<div id="touchData" data-touch="<%- JSON.stringify(touch) %>"></div>
 <script src="game.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
