@@ -113,8 +113,13 @@ function StopTime() {
     //DBから配列データーを取得してからタイムを比較してそれらから順位を求めていく
     //なのでforEachで回すだけでおｋ
 
-    const touchData=document.getElementById("touchData")
-    console.log(touchData)
+// game.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const touchData = JSON.parse(document.currentScript.getAttribute('data-touch'));
+    console.log(touchData); // データを確認
+    // ここでtouchDataを使った処理を記述
+});
 
 
     score.innerHTML = `${playerName}さんは<br>${record}で$位です!!`;

@@ -29,7 +29,7 @@ app.get("/touch",(req,res)=>{
                 console.log("データベース内を表示できませんでした。", error);
                 return res.status(500).send("Internal Server Error");
             }
-            res.render("game.ejs",{ touch:results.rows });
+            res.render("game.ejs",{ touch:results.rows});
             console.log("データを送信できました")
         }
     );
