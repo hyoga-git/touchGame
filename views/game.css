@@ -1,15 +1,15 @@
 body{
     text-align: center;
     font-size:40px;
-    background-color:rgb(101, 77, 77);
+     background-color: rgb(159 120 120);
 }
 
 #return {
-    background-color:gray;
+background-color: rgb(197 213 213);
     text-align: right;
 }
 #time{
-    font-size:30px;
+    font-size:50px;
     text-align: center;
     margin:20px;
 }
@@ -33,12 +33,13 @@ input{
 
 
 button{
-    font-size:20px;
+    font-size:40px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
     background-color:black;
-    color:white;
+    color:#e8dfdf;
     margin:auto;
-    width:90px;    
-    height:60px;
+    width:100px;    
+    height:70px;
     border-radius: 20%;
     margin:10px;
     
